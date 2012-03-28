@@ -62,7 +62,8 @@ zip_discard(struct zip *za)
     _zip_string_free(za->comment_changes);
 
     if (za->entry) {
-	for (i=0; i<za->nentry; i++)
+    int nentry = za->nentry;
+	for (i=0; i<nentry; i++)
 	    _zip_entry_finalize(za->entry+i);
 	free(za->entry);
     }

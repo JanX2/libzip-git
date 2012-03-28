@@ -54,7 +54,7 @@ zip_get_file_comment(struct zip *za, zip_uint64_t idx, int *lenp, int flags)
 	    _zip_error_set(&za->error, ZIP_ER_NOENT, 0);
 	    return NULL;
 	}
-	if (idx >= za->cdir->nentry) {
+	if (idx >= (zip_uint64_t)za->cdir->nentry) {
 	    _zip_error_set(&za->error, ZIP_ER_INVAL, 0);
 	    return NULL;
 	}

@@ -59,13 +59,15 @@ _zip_set_name(struct zip *za, zip_uint64_t idx, const char *name)
 	return -1;
     }
 
-    if ((i=_zip_name_locate(za, name, 0, NULL)) != -1 && i != idx) {
+    zip_int64_t index = (zip_int64_t)idx;
+    
+    if ((i=_zip_name_locate(za, name, 0, NULL)) != -1 && i != index) {
 	_zip_error_set(&za->error, ZIP_ER_EXISTS, 0);
 	return -1;
     }
 
     /* no effective name change */
-    if (i == idx)
+    if (i == index)
 	return 0;
 
     com = zip_get_file_comment(za, idx, &comlen, ZIP_FL_NAME_RAW);

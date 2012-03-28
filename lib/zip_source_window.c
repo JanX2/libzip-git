@@ -79,15 +79,16 @@ window_read(struct zip_source *src, void *_ctx, void *data,
 	    zip_uint64_t len, enum zip_source_cmd cmd)
 {
     struct window *ctx;
-    zip_int64_t i, n;
+    zip_int64_t i, n, skip;
     char b[8192];
 
     ctx = (struct window *)_ctx;
 
     switch (cmd) {
     case ZIP_SOURCE_OPEN:
-	for (n=0; n<ctx->skip; n+=i) {
-	    i = (ctx->skip-n > sizeof(b) ? sizeof(b) : ctx->skip-n);
+    skip = (zip_int64_t)ctx->skip;
+	for (n=0; n<skip; n+=i) {
+	    i = (ctx->skip-n > sizeof(b) ? sizeof(b) : skip-n);
 	    if ((i=zip_source_read(src, b, i)) < 0)
 		return ZIP_SOURCE_ERR_LOWER;
 	    if (i==0) {

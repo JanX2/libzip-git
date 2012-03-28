@@ -70,7 +70,7 @@ _zip_get_name(struct zip *za, zip_uint64_t idx, int flags,
     }
 
     /* XXX: read Infozip UTF-8 Extension 0x7075 file name? */
-    if (za->cdir == NULL || idx >= za->cdir->nentry) {
+    if (za->cdir == NULL || idx >= (zip_uint64_t)za->cdir->nentry) {
 	_zip_error_set(error, ZIP_ER_INVAL, 0);
 	return NULL;
     }

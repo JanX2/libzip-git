@@ -60,7 +60,7 @@ zip_stat_index(struct zip *za, zip_uint64_t index, int flags,
 	}
     }
     else {
-	if (za->cdir == NULL || index >= za->cdir->nentry) {
+	if (za->cdir == NULL || index >= (zip_uint64_t)za->cdir->nentry) {
 	    _zip_error_set(&za->error, ZIP_ER_INVAL, 0);
 	    return -1;
 	}

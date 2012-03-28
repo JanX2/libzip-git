@@ -62,7 +62,7 @@ _zip_unchange(struct zip *za, zip_uint64_t idx, int allow_duplicates)
 	    i = _zip_name_locate(za,
 			 _zip_get_name(za, idx, ZIP_FL_UNCHANGED, NULL),
 				 0, NULL);
-	    if (i != -1 && i != idx) {
+	    if (i != -1 && (zip_uint64_t)i != idx) {
 		_zip_error_set(&za->error, ZIP_ER_EXISTS, 0);
 		return -1;
 	    }

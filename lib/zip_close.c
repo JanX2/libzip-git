@@ -149,7 +149,8 @@ zip_close(struct zip *za)
 
 
     /* create list of files with index into original archive  */
-    for (i=j=0; i<za->nentry; i++) {
+    int nentry = (int)za->nentry;
+    for (i=j=0; i<nentry; i++) {
 	if (za->entry[i].state == ZIP_ST_DELETED)
 	    continue;
 
@@ -494,7 +495,7 @@ copy_data(FILE *fs, off_t len, FILE *ft, struct zip_error *error)
 	return 0;
 
     while (len > 0) {
-	nn = len > sizeof(buf) ? sizeof(buf) : len;
+	nn = len > (off_t)sizeof(buf) ? sizeof(buf) : len;
 	if ((n=fread(buf, 1, nn, fs)) < 0) {
 	    _zip_error_set(error, ZIP_ER_READ, errno);
 	    return -1;
@@ -629,7 +630,8 @@ _zip_changed(struct zip *za, int *survivorsp)
 	|| za->ch_flags != za->flags)
 	changed = 1;
 
-    for (i=0; i<za->nentry; i++) {
+    int nentry = (int)za->nentry;
+    for (i=0; i<nentry; i++) {
 	if (za->entry[i].state != ZIP_ST_UNCHANGED || za->entry[i].changes.valid != 0)
 	    changed = 1;
 	if (za->entry[i].state != ZIP_ST_DELETED)

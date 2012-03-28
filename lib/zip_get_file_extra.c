@@ -46,7 +46,7 @@ zip_get_file_extra(struct zip *za, zip_uint64_t idx, int *lenp, int flags)
     }
 
     if ((flags & ZIP_FL_UNCHANGED) || (za->entry[idx].changes.valid & ZIP_DIRENT_EXTRAFIELD) == 0) {
-	if (idx >= za->cdir->nentry) {
+	if (idx >= (zip_uint64_t)za->cdir->nentry) {
 	    _zip_error_set(&za->error, ZIP_ER_INVAL, 0);
 	    return NULL;
 	}

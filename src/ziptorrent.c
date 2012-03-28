@@ -1,5 +1,5 @@
 /*
-  zipcmp.c -- compare zip files
+  ziptorrent.c -- compare zip files
   Copyright (C) 2008-2010 Dieter Baron and Thomas Klausner
 
   This file is part of libzip, a library to manipulate ZIP archives.

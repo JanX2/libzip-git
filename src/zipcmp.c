@@ -341,7 +341,7 @@ ef_read(struct zip *za, int idx, struct entry *e)
 {
     int n_local, n_central;
     int i;
-    zip_uint16_t len;
+    //zip_uint16_t len;
 
     n_local = zip_file_extra_fields_count(za, idx, ZIP_FL_LOCAL);
     n_central = zip_file_extra_fields_count(za, idx, ZIP_FL_CENTRAL);

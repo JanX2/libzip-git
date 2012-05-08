@@ -642,7 +642,7 @@ _zip_read_eocd64(FILE *f, const unsigned char *eocd64loc, unsigned char *buf,
 	}
 
 	clearerr(f);
-	buflen = fread(eocd, 1, EOCD64LEN, f);
+	/*buflen = */fread(eocd, 1, EOCD64LEN, f);
 
 	if (ferror(f)) {
 	    _zip_error_set(error, ZIP_ER_READ, errno);

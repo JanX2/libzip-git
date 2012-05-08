@@ -412,7 +412,7 @@ ef_print(const void *p)
     int i;
 
     printf("                    %s  ", ef->name);
-    printf("%04x %c <", ef->id, ef->flags == ZIP_FL_LOCAL ? 'l' : 'c', ef->data);
+    printf("%04x %c <", ef->id, ((ef->flags == ZIP_FL_LOCAL) ? 'l' : 'c')/*, ef->data*/);
     for (i=0; i<ef->size; i++)
 	printf("%s%02x", i ? " " : "", ef->data[i]);
     printf(">\n");

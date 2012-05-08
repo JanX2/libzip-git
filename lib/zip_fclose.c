@@ -47,7 +47,7 @@ zip_fclose(struct zip_file *zf)
     if (zf->src)
 	zip_source_free(zf->src);
 
-    for (i=0; i<zf->za->nfile; i++) {
+    for (i=0; i<(int)zf->za->nfile; i++) {
 	if (zf->za->file[i] == zf) {
 	    zf->za->file[i] = zf->za->file[zf->za->nfile-1];
 	    zf->za->nfile--;

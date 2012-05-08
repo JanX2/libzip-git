@@ -150,7 +150,7 @@ _zip_source_zip_new(struct zip *za, struct zip *srcza, zip_uint64_t srcidx, int 
 	    src = s2;
 	}
 	if (((flags & ZIP_FL_COMPRESSED) == 0 || st.comp_method == ZIP_CM_STORE)
-	    && (len == 0 || len == st.comp_size)) {
+	    && (len == 0 || len == (zip_int64_t)st.comp_size)) {
 	    /* when reading the whole file, check for crc errors */
 	    if ((s2=zip_source_crc(za, src, 1)) == NULL) {
 		zip_source_free(src);

@@ -68,7 +68,7 @@ zip_discard(struct zip *za)
 	free(za->entry);
     }
 
-    for (i=0; i<za->nfile; i++) {
+    for (i=0; i<(int)za->nfile; i++) {
 	if (za->file[i]->error.zip_err == ZIP_ER_OK) {
 	    _zip_error_set(&za->file[i]->error, ZIP_ER_ZIPCLOSED, 0);
 	    za->file[i]->za = NULL;

@@ -209,7 +209,7 @@ _zip_readcdir(FILE *fp, off_t buf_offset, unsigned char *buf, unsigned char *eoc
     cdp = eocd + 20;
     comment_len = _zip_read2(&cdp);
 
-    if ((zip_uint64_t)(cd->offset+cd->size) > (zip_uint64_t)buf_offset + (eocd-buf)) {
+    if ((zip_int64_t)(cd->offset+cd->size) > buf_offset + (eocd-buf)) {
 	/* cdir spans past EOCD record */
 	_zip_error_set(error, ZIP_ER_INCONS, 0);
 	_zip_cdir_free(cd);
@@ -234,7 +234,7 @@ _zip_readcdir(FILE *fp, off_t buf_offset, unsigned char *buf, unsigned char *eoc
 	}
     }
 
-    if (cd->offset >= buf_offset) {
+    if ((zip_int64_t)cd->offset >= (zip_int64_t)buf_offset) {
 	/* if buffer already read in, use it */
 	cdp = buf + (cd->offset - buf_offset);
 	bufp = &cdp;
@@ -259,7 +259,7 @@ _zip_readcdir(FILE *fp, off_t buf_offset, unsigned char *buf, unsigned char *eoc
 
     left = cd->size;
     i=0;
-    while (i<cd->nentry && left > 0) {
+    while (i<(int)cd->nentry && left > 0) {
 	if ((cd->entry[i].orig=_zip_dirent_new()) == NULL
 	    || (_zip_dirent_read(cd->entry[i].orig, fp, bufp, &left, 0, error)) < 0) {
 	    _zip_cdir_free(cd);
@@ -267,7 +267,7 @@ _zip_readcdir(FILE *fp, off_t buf_offset, unsigned char *buf, unsigned char *eoc
 	}
 	i++;
 	
-	if (i == cd->nentry && left > 0) {
+	if (i == (int)cd->nentry && left > 0) {
 	    /* Infozip extension for more than 64k entries:
 	       nentries wraps around, size indicates correct EOCD */
 	    if (_zip_cdir_grow(cd, cd->nentry+ZIP_UINT16_MAX, error) < 0) {
@@ -303,7 +303,7 @@ _zip_checkcons(FILE *fp, struct zip_cdir *cd, struct zip_error *error)
     else
 	min = max = 0;
 
-    for (i=0; i<cd->nentry; i++) {
+    for (i=0; i<(int)cd->nentry; i++) {
 	if (cd->entry[i].orig->offset < min)
 	    min = cd->entry[i].orig->offset;
 	if (min > cd->offset) {
@@ -597,7 +597,7 @@ _zip_read_eocd(const unsigned char *eocd, unsigned char *buf, off_t buf_offset, 
     size = _zip_read4(&cdp);
     offset = _zip_read4(&cdp);
 
-    if (offset+size > buf_offset + (eocd-buf)) {
+    if ((zip_int64_t)(offset+size) > buf_offset + (eocd-buf)) {
 	/* cdir spans past EOCD record */
 	_zip_error_set(error, ZIP_ER_INCONS, 0);
 	return NULL;
@@ -628,12 +628,12 @@ _zip_read_eocd64(FILE *f, const unsigned char *eocd64loc, unsigned char *buf,
     cdp = eocd64loc+8;
     eocd_offset = _zip_read8(&cdp);
 
-    if (eocd_offset+EOCD64LEN > buf_offset+(eocd64loc-buf)) {
+    if ((zip_int64_t)eocd_offset+EOCD64LEN > buf_offset+(eocd64loc-buf)) {
 	_zip_error_set(error, ZIP_ER_INCONS, 0);
 	return NULL;
     }
 
-    if (eocd_offset >= buf_offset)
+    if ((zip_int64_t)eocd_offset >= buf_offset)
 	cdp = buf+(eocd_offset-buf_offset);
     else {
 	if (fseeko(f, eocd_offset, SEEK_SET) != 0) {
@@ -660,7 +660,7 @@ _zip_read_eocd64(FILE *f, const unsigned char *eocd64loc, unsigned char *buf,
     
     size = _zip_read8(&cdp);
 
-    if ((flags & ZIP_CHECKCONS) && size+eocd_offset+12 != buf_offset+(eocd64loc-buf)) {
+    if ((flags & ZIP_CHECKCONS) && (zip_int64_t)(size+eocd_offset+12) != buf_offset+(eocd64loc-buf)) {
 	_zip_error_set(error, ZIP_ER_INCONS, 0);
 	return NULL;
     }

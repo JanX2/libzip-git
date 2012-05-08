@@ -57,7 +57,7 @@ _zip_cdir_free(struct zip_cdir *cd)
     if (!cd)
 	return;
 
-    for (i=0; i<cd->nentry; i++)
+    for (i=0; i<(int)cd->nentry; i++)
 	_zip_entry_finalize(cd->entry+i);
     free(cd->entry);
     _zip_string_free(cd->comment);
@@ -72,12 +72,14 @@ _zip_cdir_grow(struct zip_cdir *cd, int nentry, struct zip_error *error)
     struct zip_entry *entry;
     int i;
 
-    if (nentry < cd->nentry_alloc) {
+    int nentry_alloc = cd->nentry_alloc;
+    
+    if (nentry < nentry_alloc) {
 	_zip_error_set(error, ZIP_ER_INTERNAL, 0);
 	return -1;
     }
 
-    if (nentry == cd->nentry_alloc)
+    if (nentry == nentry_alloc)
 	return 0;
 
     if ((entry=((struct zip_entry *)
@@ -86,7 +88,7 @@ _zip_cdir_grow(struct zip_cdir *cd, int nentry, struct zip_error *error)
 	return -1;
     }
     
-    for (i=cd->nentry_alloc; i<nentry; i++)
+    for (i=nentry_alloc; i<nentry; i++)
 	_zip_entry_init(entry+i);
 
     cd->nentry_alloc = nentry;
@@ -447,8 +449,8 @@ _zip_dirent_read(struct zip_dirent *zde, FILE *fp,
     /* Zip64 */
 
     if (zde->uncomp_size == ZIP_UINT32_MAX || zde->comp_size == ZIP_UINT32_MAX || zde->offset == ZIP_UINT32_MAX) {
-	zip_uint16_t ef_len, needed_len;
-	const zip_uint8_t *ef = _zip_ef_get_by_id(zde->extra_fields, &ef_len, ZIP_EF_ZIP64, 0, local ? ZIP_EF_LOCAL : ZIP_EF_CENTRAL, error);
+	zip_uint16_t ef_len64, needed_len;
+	const zip_uint8_t *ef = _zip_ef_get_by_id(zde->extra_fields, &ef_len64, ZIP_EF_ZIP64, 0, local ? ZIP_EF_LOCAL : ZIP_EF_CENTRAL, error);
 	/* XXX: if ef_len == 0 && !ZIP64_EOCD: no error, 0xffffffff is valid value */
 	if (ef == NULL)
 	    return -1;
@@ -460,7 +462,7 @@ _zip_dirent_read(struct zip_dirent *zde, FILE *fp,
 	    needed_len = ((zde->uncomp_size == ZIP_UINT32_MAX) + (zde->comp_size == ZIP_UINT32_MAX) + (zde->offset == ZIP_UINT32_MAX)) * 8
 		+ (zde->disk_number == ZIP_UINT16_MAX) * 4;
 
-	if (ef_len != needed_len) {
+	if (ef_len64 != needed_len) {
 	    _zip_error_set(error, ZIP_ER_INCONS, 0);
 	    return -1;
 	}
@@ -888,7 +890,7 @@ _zip_read_data(const unsigned char **buf, FILE *fp, int len, int nulp, struct zi
 	*buf += len;
     }
     else {
-	if (fread(r, 1, len, fp)<len) {
+	if ((int)fread(r, 1, len, fp)<len) {
 	    free(r);
 	    _zip_error_set(error, ZIP_ER_READ, errno);
 	    return NULL;

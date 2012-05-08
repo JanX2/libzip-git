@@ -273,7 +273,7 @@ _zip_read_local_ef(struct zip *za, int idx)
     zip_uint8_t *ef_raw;
     struct zip_extra_field *ef;
 
-    if (idx >= za->nentry) {
+    if (idx >= (int)za->nentry) {
 	_zip_error_set(&za->error, ZIP_ER_INVAL, 0);
 	return -1;
     }

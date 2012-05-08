@@ -544,7 +544,7 @@ _zip_changed(struct zip *za, int *survivorsp)
 	changed = 1;
 
     int nentry = (int)za->nentry;
-    for (i=0; i<za->nentry; i++) {
+    for (i=0; i<nentry; i++) {
 	if (za->entry[i].deleted || za->entry[i].source || (za->entry[i].changes && za->entry[i].changes->changed != 0))
 	    changed = 1;
 	if (!za->entry[i].deleted)

@@ -190,7 +190,7 @@ zip_file_extra_field_set(struct zip *za, zip_uint64_t idx, zip_uint16_t ef_id, z
     struct zip_dirent *de;
     zip_uint16_t ls, cs;
     struct zip_extra_field *ef, *ef_prev, *ef_new;
-    int i, found;
+    int i = 0, found;
 
     if ((de=_zip_get_dirent(za, idx, flags, &za->error)) == NULL)
 	return -1;

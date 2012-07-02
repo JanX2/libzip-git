@@ -181,8 +181,8 @@ _zip_cdir_write(struct zip *za, const struct zip_filelist *filelist, int survivo
     _zip_write4(0, fp);
     _zip_write2(survivors >= ZIP_UINT16_MAX ? ZIP_UINT16_MAX : survivors, fp);
     _zip_write2(survivors >= ZIP_UINT16_MAX ? ZIP_UINT16_MAX : survivors, fp);
-    _zip_write4(size >= ZIP_UINT32_MAX ? ZIP_UINT32_MAX : size, fp);
-    _zip_write4(offset >= ZIP_UINT32_MAX ? ZIP_UINT32_MAX : offset, fp);
+    _zip_write4(size >= ZIP_UINT32_MAX ? ZIP_UINT32_MAX : (zip_uint32_t)size, fp);
+    _zip_write4(offset >= ZIP_UINT32_MAX ? ZIP_UINT32_MAX : (zip_uint32_t)offset, fp);
 
     comment = za->comment_changed ? za->comment_changes : za->comment_orig;
 

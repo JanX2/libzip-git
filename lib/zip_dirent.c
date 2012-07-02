@@ -624,7 +624,7 @@ int
 _zip_dirent_write(struct zip_dirent *de, FILE *fp, int flags, struct zip_error *error)
 {
     unsigned short dostime, dosdate;
-    zip_uint16_t zip64_ef_size;
+    //zip_uint16_t zip64_ef_size;
     enum zip_encoding_type com_enc, name_enc;
     struct zip_extra_field *ef;
     zip_uint8_t ef_zip64[24], *ef_zip64_p;

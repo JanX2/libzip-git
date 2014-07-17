@@ -2029,6 +2029,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				VERSION_INFO_BUILDER = "";
 				VERSION_INFO_FILE = "";
 				WRAPPER_EXTENSION = framework;
@@ -2061,6 +2062,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				VERSION_INFO_BUILDER = "";
 				VERSION_INFO_FILE = "";
 				WRAPPER_EXTENSION = framework;

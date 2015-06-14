@@ -482,8 +482,8 @@ _zip_dirent_read(zip_dirent_t *zde, zip_source_t *src, zip_buffer_t *buffer, boo
 	
 	if (zde->uncomp_size == ZIP_UINT32_MAX)
 	    zde->uncomp_size = _zip_buffer_get_64(ef_buffer);
-	else if (local)
-	    ef += 8;
+	/*else if (local)
+	    ef += 8;*/
 	if (zde->comp_size == ZIP_UINT32_MAX)
 	    zde->comp_size = _zip_buffer_get_64(ef_buffer);
 	if (!local) {
@@ -621,7 +621,7 @@ _zip_dirent_write(zip_t *za, zip_dirent_t *de, zip_flags_t flags)
 
     ef = NULL;
 
-    is_zip64 = false;
+	//is_zip64 = false;
 
     name_enc = _zip_guess_encoding(de->filename, ZIP_ENCODING_UNKNOWN);
     com_enc = _zip_guess_encoding(de->comment, ZIP_ENCODING_UNKNOWN);

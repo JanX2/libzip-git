@@ -1636,6 +1636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D7E35491B330AD500022624 /* zip_source_is_deleted.c in Sources */,
 				4BCF3039199ABDDA0064207B /* zip_source_tell_write.c in Sources */,
 				4B01D6A615B2F46B002D5007 /* zip_add_dir.c in Sources */,
 				4B972052188EBE85002FAFAD /* zip_file_set_external_attributes.c in Sources */,
@@ -1807,6 +1808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D7E354A1B330BCD00022624 /* zip_source_is_deleted.c in Sources */,
 				4BCF3038199ABDDA0064207B /* zip_source_tell_write.c in Sources */,
 				4BDC724415B1B25E00236D3C /* zip_add_dir.c in Sources */,
 				4B972051188EBE85002FAFAD /* zip_file_set_external_attributes.c in Sources */,

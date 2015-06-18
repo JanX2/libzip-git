@@ -61,6 +61,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3D7E35431B33063F00022624 /* in-memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E35401B33063600022624 /* in-memory.c */; };
+		3D7E35461B33064B00022624 /* libzip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B01D68B15B2F3F1002D5007 /* libzip.framework */; };
+		3D7E35481B33076C00022624 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7E35471B33076C00022624 /* libz.dylib */; };
+		3D7E35491B330AD500022624 /* zip_source_is_deleted.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE402AC19D94AE400298248 /* zip_source_is_deleted.c */; };
+		3D7E354A1B330BCD00022624 /* zip_source_is_deleted.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE402AC19D94AE400298248 /* zip_source_is_deleted.c */; };
 		4B01D6A615B2F46B002D5007 /* zip_add_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC71F115B1B25E00236D3C /* zip_add_dir.c */; };
 		4B01D6A715B2F46B002D5007 /* zip_add_entry.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC71F215B1B25E00236D3C /* zip_add_entry.c */; };
 		4B01D6A815B2F46B002D5007 /* zip_add.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC71F315B1B25E00236D3C /* zip_add.c */; };
@@ -291,6 +296,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3D7E35441B33064500022624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BDC71BF15B181DA00236D3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B01D68A15B2F3F1002D5007;
+			remoteInfo = libzip;
+		};
 		4B01D72C15B2F5AC002D5007 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4BDC71BF15B181DA00236D3C /* Project object */;
@@ -420,6 +432,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3D7E35351B3305FB00022624 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		4B01D6FB15B2F4B1002D5007 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,6 +517,10 @@
 
 /* Begin PBXFileReference section */
 		3D77B86517009AA1000A5794 /* extract-version.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "extract-version.sh"; sourceTree = SOURCE_ROOT; };
+		3D7E35371B3305FB00022624 /* in-memory-example */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "in-memory-example"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D7E35401B33063600022624 /* in-memory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "in-memory.c"; sourceTree = "<group>"; };
+		3D7E35421B33063600022624 /* windows-open.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "windows-open.c"; sourceTree = "<group>"; };
+		3D7E35471B33076C00022624 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4B01D68B15B2F3F1002D5007 /* libzip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libzip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B01D6FD15B2F4B1002D5007 /* zipmerge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = zipmerge; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B01D70815B2F4CF002D5007 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
@@ -824,6 +849,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3D7E35341B3305FB00022624 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D7E35481B33076C00022624 /* libz.dylib in Frameworks */,
+				3D7E35461B33064B00022624 /* libzip.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B01D68715B2F3F1002D5007 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -914,6 +948,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D7E353E1B33063600022624 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				3D7E35401B33063600022624 /* in-memory.c */,
+				3D7E35421B33063600022624 /* windows-open.c */,
+			);
+			name = examples;
+			path = ../examples;
+			sourceTree = "<group>";
+		};
 		4B01D72015B2F54C002D5007 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1208,7 @@
 			children = (
 				4B28AA2815BAD4F800D0C17D /* info */,
 				4BDC71E415B182B200236D3C /* Supporting Files */,
+				3D7E353E1B33063600022624 /* examples */,
 				4BDC71E315B182B200236D3C /* libzip */,
 				4B01D72015B2F54C002D5007 /* src */,
 				4BACD57415BC2AA100920691 /* regress */,
@@ -1187,6 +1232,7 @@
 				4BACD5DF15BC2F3700920691 /* fread */,
 				4BACD65015BC301300920691 /* tryopen */,
 				4BD6CB6C19E71CD100710654 /* hole */,
+				3D7E35371B3305FB00022624 /* in-memory-example */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1194,6 +1240,7 @@
 		4BDC71CA15B181DA00236D3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D7E35471B33076C00022624 /* libz.dylib */,
 				4B01D70815B2F4CF002D5007 /* libz.dylib */,
 			);
 			name = Frameworks;
@@ -1349,6 +1396,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3D7E35361B3305FB00022624 /* in-memory-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D7E353D1B3305FB00022624 /* Build configuration list for PBXNativeTarget "in-memory-example" */;
+			buildPhases = (
+				3D7E35331B3305FB00022624 /* Sources */,
+				3D7E35341B3305FB00022624 /* Frameworks */,
+				3D7E35351B3305FB00022624 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D7E35451B33064500022624 /* PBXTargetDependency */,
+			);
+			name = "in-memory-example";
+			productName = "in-memory-example";
+			productReference = 3D7E35371B3305FB00022624 /* in-memory-example */;
+			productType = "com.apple.product-type.tool";
+		};
 		4B01D68A15B2F3F1002D5007 /* libzip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B01D69E15B2F3F1002D5007 /* Build configuration list for PBXNativeTarget "libzip" */;
@@ -1539,6 +1604,11 @@
 			attributes = {
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = NiH;
+				TargetAttributes = {
+					3D7E35361B3305FB00022624 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
 			};
 			buildConfigurationList = 4BDC71C215B181DA00236D3C /* Build configuration list for PBXProject "libzip" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1566,6 +1636,7 @@
 				4BD6CB5F19E71CD100710654 /* hole */,
 				4BACD58815BC2CEA00920691 /* modify */,
 				4BACD64515BC301300920691 /* tryopen */,
+				3D7E35361B3305FB00022624 /* in-memory-example */,
 			);
 		};
 /* End PBXProject section */
@@ -1632,6 +1703,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3D7E35331B3305FB00022624 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D7E35431B33063F00022624 /* in-memory.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B01D68615B2F3F1002D5007 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1913,6 +1992,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3D7E35451B33064500022624 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B01D68A15B2F3F1002D5007 /* libzip */;
+			targetProxy = 3D7E35441B33064500022624 /* PBXContainerItemProxy */;
+		};
 		4B01D72D15B2F5AC002D5007 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4B01D6FC15B2F4B1002D5007 /* zipmerge */;
@@ -2006,6 +2090,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3D7E353B1B3305FB00022624 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3D7E353C1B3305FB00022624 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4B01D69C15B2F3F1002D5007 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2459,6 +2563,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3D7E353D1B3305FB00022624 /* Build configuration list for PBXNativeTarget "in-memory-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D7E353B1B3305FB00022624 /* Debug */,
+				3D7E353C1B3305FB00022624 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4B01D69E15B2F3F1002D5007 /* Build configuration list for PBXNativeTarget "libzip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -66,6 +66,8 @@
 		3D7E35481B33076C00022624 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7E35471B33076C00022624 /* libz.dylib */; };
 		3D7E35491B330AD500022624 /* zip_source_is_deleted.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE402AC19D94AE400298248 /* zip_source_is_deleted.c */; };
 		3D7E354A1B330BCD00022624 /* zip_source_is_deleted.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE402AC19D94AE400298248 /* zip_source_is_deleted.c */; };
+		3D9284811C309510001EABA7 /* zip_hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9284801C309510001EABA7 /* zip_hash.c */; };
+		3D9284821C309510001EABA7 /* zip_hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9284801C309510001EABA7 /* zip_hash.c */; };
 		4B01D6A615B2F46B002D5007 /* zip_add_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC71F115B1B25E00236D3C /* zip_add_dir.c */; };
 		4B01D6A715B2F46B002D5007 /* zip_add_entry.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC71F215B1B25E00236D3C /* zip_add_entry.c */; };
 		4B01D6A815B2F46B002D5007 /* zip_add.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC71F315B1B25E00236D3C /* zip_add.c */; };
@@ -521,6 +523,7 @@
 		3D7E35401B33063600022624 /* in-memory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "in-memory.c"; sourceTree = "<group>"; };
 		3D7E35421B33063600022624 /* windows-open.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "windows-open.c"; sourceTree = "<group>"; };
 		3D7E35471B33076C00022624 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3D9284801C309510001EABA7 /* zip_hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip_hash.c; sourceTree = "<group>"; };
 		4B01D68B15B2F3F1002D5007 /* libzip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libzip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B01D6FD15B2F4B1002D5007 /* zipmerge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = zipmerge; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B01D70815B2F4CF002D5007 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1301,6 +1304,7 @@
 				4BDC721A15B1B25E00236D3C /* zip_get_num_entries.c */,
 				4BDC721B15B1B25E00236D3C /* zip_get_num_files.c */,
 				4BCF3019199A2F820064207B /* zip_io_util.c */,
+				3D9284801C309510001EABA7 /* zip_hash.c */,
 				4BDC721C15B1B25E00236D3C /* zip_memdup.c */,
 				4BDC721D15B1B25E00236D3C /* zip_name_locate.c */,
 				4BDC721E15B1B25E00236D3C /* zip_new.c */,
@@ -1756,6 +1760,7 @@
 				4B01D6C515B2F46B002D5007 /* zip_fopen_index_encrypted.c in Sources */,
 				4B01D6C615B2F46B002D5007 /* zip_fopen_index.c in Sources */,
 				4B01D6C715B2F46B002D5007 /* zip_fopen.c in Sources */,
+				3D9284821C309510001EABA7 /* zip_hash.c in Sources */,
 				4B01D6C815B2F46B002D5007 /* zip_fread.c in Sources */,
 				4B01D6C915B2F46B002D5007 /* zip_get_archive_comment.c in Sources */,
 				4B01D6CA15B2F46B002D5007 /* zip_get_archive_flag.c in Sources */,
@@ -1928,6 +1933,7 @@
 				4BDC726315B1B25E00236D3C /* zip_fopen_index_encrypted.c in Sources */,
 				4BDC726415B1B25E00236D3C /* zip_fopen_index.c in Sources */,
 				4BDC726515B1B25E00236D3C /* zip_fopen.c in Sources */,
+				3D9284811C309510001EABA7 /* zip_hash.c in Sources */,
 				4BDC726615B1B25E00236D3C /* zip_fread.c in Sources */,
 				4BDC726715B1B25E00236D3C /* zip_get_archive_comment.c in Sources */,
 				4BDC726815B1B25E00236D3C /* zip_get_archive_flag.c in Sources */,
